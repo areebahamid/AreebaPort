@@ -482,6 +482,13 @@ export default function Projects() {
         :global(.dark-mode) .project-image-overlay-content p {
           color: #cccccc;
         }
+
+        /* Dark mode styling for View Project link */
+        :global(.dark-mode) .project-link {
+          color: white !important;
+          text-decoration-color: white !important;
+          border-bottom-color: white !important;
+        }
       `}</style>
     </section>
   );

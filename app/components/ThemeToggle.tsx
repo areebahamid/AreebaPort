@@ -44,7 +44,7 @@ export default function ThemeToggle() {
       <style jsx>{`
         .theme-toggle {
           position: fixed;
-          bottom: 30px;
+          bottom: 90px;
           right: 30px;
           background: none;
           border: none;
@@ -89,7 +89,7 @@ export default function ThemeToggle() {
         /* Mobile responsiveness */
         @media (max-width: 768px) {
           .theme-toggle {
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
             padding: 10px;
           }
@@ -97,7 +97,7 @@ export default function ThemeToggle() {
 
         @media (max-width: 480px) {
           .theme-toggle {
-            bottom: 15px;
+            bottom: 70px;
             right: 15px;
             padding: 8px;
           }

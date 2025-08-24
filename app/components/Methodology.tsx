@@ -8,8 +8,7 @@ export default function Methodology() {
       quote:
         "Research is to see what everybody else has seen, and to think what nobody else has thought",
       author: "Albert Szent-Györgyi",
-      gradient:
-        "linear-gradient(135deg, #87CEEB 0%, #9370DB 50%, #FF6347 100%)",
+      background: "/c3",
       graphic: "light-beam",
     },
     {
@@ -18,8 +17,7 @@ export default function Methodology() {
       quote:
         "Design is not just what it looks like and feels like. Design is how it works",
       author: "Steve Jobs",
-      gradient:
-        "linear-gradient(135deg, #8A2BE2 0%, #FF1493 50%, #FFE4E1 100%)",
+      background: "/c1",
       graphic: "dots",
     },
     {
@@ -27,8 +25,7 @@ export default function Methodology() {
       title: "UI, HMI & Design system",
       quote: "The best way to predict the future is to invent it",
       author: "Alan Kay",
-      gradient:
-        "linear-gradient(135deg, #E6E6FA 0%, #9370DB 50%, #0000CD 100%)",
+      background: "/c2",
       graphic: "circle-lines",
     },
   ];
@@ -50,7 +47,7 @@ export default function Methodology() {
               key={service.id}
               className="methodology-card"
               style={{
-                ["--gradient" as string]: service.gradient,
+                ["--background" as string]: service.background,
               }}>
               <div className="methodology-card__content">
                 <h3 className="methodology-card__title">{service.title}</h3>
@@ -114,10 +111,12 @@ export default function Methodology() {
         }
 
         .methodology-card {
-          background: #808080;
+          background-image: var(--background);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           border-radius: 0;
           overflow: hidden;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
           transition: all 0.4s ease;
           cursor: pointer;
           position: relative;
@@ -126,10 +125,28 @@ export default function Methodology() {
           flex-direction: column;
         }
 
-        .methodology-card:hover {
-          background: var(--gradient) !important;
-          transform: translateY(-12px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        /* Debug: Force background to be visible */
+        .methodology-card:nth-child(1) {
+          background-image: url("/c3.jpg") !important;
+        }
+
+        .methodology-card:nth-child(2) {
+          background-image: url("/c1.jpg") !important;
+        }
+
+        .methodology-card:nth-child(3) {
+          background-image: url("/c2.jpg") !important;
+        }
+
+        .methodology-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+          z-index: 1;
         }
 
         .methodology-card__content {
@@ -139,6 +156,16 @@ export default function Methodology() {
           flex-direction: column;
           justify-content: space-between;
           color: white;
+          position: relative;
+          z-index: 2;
+        }
+
+        .methodology-card:hover {
+          transform: translateY(-12px);
+        }
+
+        .methodology-card:hover::before {
+          background: rgba(0, 0, 0, 0.2);
         }
 
         .methodology-card__title {
@@ -334,11 +361,23 @@ export default function Methodology() {
         }
 
         :global(.dark-mode) .methodology-card {
-          background: #333;
+          background-image: var(--background) !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
         }
 
-        :global(.dark-mode) .methodology-card:hover {
-          background: var(--gradient) !important;
+        /* Force background images in dark mode */
+        :global(.dark-mode) .methodology-card:nth-child(1) {
+          background-image: url("/c3.jpg") !important;
+        }
+
+        :global(.dark-mode) .methodology-card:nth-child(2) {
+          background-image: url("/c1.jpg") !important;
+        }
+
+        :global(.dark-mode) .methodology-card:nth-child(3) {
+          background-image: url("/c2.jpg") !important;
         }
       `}</style>
     </section>
