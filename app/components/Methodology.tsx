@@ -39,7 +39,7 @@ export default function Methodology() {
         <div className="methodology__header">
           <h2 className="methodology__title">Methodology ↘</h2>
           <p className="methodology__intro">
-            Our proven three-phase approach transforms ideas into exceptional
+            My proven three-phase approach transforms ideas into exceptional
             digital experiences through research, design, and rapid prototyping.
           </p>
         </div>
