@@ -21,7 +21,7 @@ export default function Services() {
           <div className="services-provide__content">
             <div className="services-provide__image">
               <img
-                src="/project/5.jpg"
+                src="/a1.jpg"
                 alt="Designer at work"
                 className="services-provide__image-content"
               />
