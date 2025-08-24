@@ -1,54 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
 
 export default function About() {
-  const topBandRef = useRef<HTMLDivElement>(null);
-  const bottomBandRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const topBand = topBandRef.current;
-    const bottomBand = bottomBandRef.current;
-
-    if (!topBand || !bottomBand) return;
-
-    let lastScrollY = window.scrollY;
-    let topBandPosition = 0;
-    let bottomBandPosition = 0;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDirection = currentScrollY > lastScrollY ? 1 : -1;
-      const scrollDelta = Math.abs(currentScrollY - lastScrollY) * 1;
-
-      // Update band positions based on scroll direction
-      if (scrollDirection > 0) {
-        // Scrolling down - top band moves right, bottom band moves left
-        topBandPosition += scrollDelta;
-        bottomBandPosition -= scrollDelta;
-      } else {
-        // Scrolling up - reverse the movement
-        topBandPosition -= scrollDelta;
-        bottomBandPosition += scrollDelta;
-      }
-
-      // Reset positions when they get too far to create infinite scroll
-      const bandWidth = 10000; // Increased width to accommodate longer text content
-      if (topBandPosition > bandWidth) topBandPosition -= bandWidth;
-      if (topBandPosition < -bandWidth) topBandPosition += bandWidth;
-      if (bottomBandPosition > bandWidth) bottomBandPosition -= bandWidth;
-      if (bottomBandPosition < -bandWidth) bottomBandPosition += bandWidth;
-
-      // Apply transforms
-      topBand.style.transform = `translateX(${topBandPosition}px)`;
-      bottomBand.style.transform = `translateX(${bottomBandPosition}px)`;
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <section id="studio" className="about">
       {/* Background Image with Blur */}
@@ -58,7 +10,7 @@ export default function About() {
 
       <div className="about__container">
         <div className="about__content">
-          <h2 className="about__title">aesthetics meets functionality!</h2>
+          <h2 className="about__title">aesthetic meets functionality!</h2>
 
           <div className="about__text">
             <p>
@@ -96,32 +48,9 @@ export default function About() {
 
         {/* Moving Bands */}
         <div className="about__bands">
-          <div className="band band--top" ref={topBandRef}>
+          {/* First row - moving left to right */}
+          <div className="band band--top">
             <div className="band-content">
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
               <span>USER EXPERIENCE DESIGN</span>
               <span>INTERFACE DESIGN</span>
               <span>USER RESEARCH</span>
@@ -136,30 +65,6 @@ export default function About() {
               <span>ACCESSIBILITY</span>
             </div>
             <div className="band-content">
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
               <span>USER EXPERIENCE DESIGN</span>
               <span>INTERFACE DESIGN</span>
               <span>USER RESEARCH</span>
@@ -175,32 +80,9 @@ export default function About() {
             </div>
           </div>
 
-          <div className="band band--bottom" ref={bottomBandRef}>
+          {/* Second row - moving right to left */}
+          <div className="band band--bottom">
             <div className="band-content">
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
               <span>USER EXPERIENCE DESIGN</span>
               <span>INTERFACE DESIGN</span>
               <span>USER RESEARCH</span>
@@ -215,30 +97,6 @@ export default function About() {
               <span>ACCESSIBILITY</span>
             </div>
             <div className="band-content">
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
-              <span>USER EXPERIENCE DESIGN</span>
-              <span>INTERFACE DESIGN</span>
-              <span>USER RESEARCH</span>
-              <span>PROTOTYPING</span>
-              <span>USABILITY TESTING</span>
-              <span>INFORMATION ARCHITECTURE</span>
-              <span>INTERACTION DESIGN</span>
-              <span>VISUAL DESIGN</span>
-              <span>USER TESTING</span>
-              <span>WIREFRAMING</span>
-              <span>DESIGN SYSTEMS</span>
-              <span>ACCESSIBILITY</span>
               <span>USER EXPERIENCE DESIGN</span>
               <span>INTERFACE DESIGN</span>
               <span>USER RESEARCH</span>
@@ -370,6 +228,7 @@ export default function About() {
           margin-top: 40px;
           background-color: transparent;
           z-index: 2;
+          overflow: hidden;
         }
 
         .about__bands::after {
@@ -393,9 +252,13 @@ export default function About() {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1px;
-          width: 100%;
+          width: max-content;
           overflow: hidden;
           z-index: 2;
+          will-change: transform;
+          animation-duration: 60s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
         }
 
         .band-content {
@@ -406,6 +269,7 @@ export default function About() {
         .band span {
           margin-right: 60px;
           flex-shrink: 0;
+          white-space: nowrap;
         }
 
         .band--top {
@@ -415,17 +279,39 @@ export default function About() {
           font-weight: 700;
           height: 50px;
           align-items: center;
+          animation-name: slideLeftToRight;
         }
 
         .band--bottom {
           bottom: 10px;
-          left: 0;
+          right: 0;
           color: #000;
           opacity: 0.7;
           -webkit-text-stroke: 1px #000;
           -webkit-text-fill-color: transparent;
           height: 50px;
           align-items: center;
+          animation-name: slideRightToLeft;
+          animation-delay: -30s;
+        }
+
+        /* Escalator Animation Keyframes */
+        @keyframes slideLeftToRight {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes slideRightToLeft {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(50%);
+          }
         }
 
         /* Mobile Responsiveness */
@@ -627,6 +513,16 @@ export default function About() {
         :global(.dark-mode) .band--bottom {
           color: white;
           -webkit-text-stroke: 1px white;
+        }
+
+        /* Ensure animations work in dark mode */
+        :global(.dark-mode) .band--top {
+          animation: slideLeftToRight 60s linear infinite;
+        }
+
+        :global(.dark-mode) .band--bottom {
+          animation: slideRightToLeft 60s linear infinite;
+          animation-delay: -30s;
         }
       `}</style>
     </section>

@@ -345,12 +345,16 @@ export default function Services() {
         /* Mobile Responsiveness for Services Provide */
         @media (max-width: 1024px) {
           .services-provide__content {
-            grid-template-columns: 1fr;
+            flex-direction: column;
             gap: 60px;
           }
 
           .services-provide__info {
             gap: 40px;
+          }
+
+          .services-provide__image {
+            width: 100%;
           }
         }
 
@@ -371,6 +375,11 @@ export default function Services() {
 
           .services-provide__description {
             font-size: 1.2rem;
+          }
+
+          .services-provide__content {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
           }
 
           .services-provide__image-content {
@@ -395,6 +404,14 @@ export default function Services() {
 
           .services-provide__description {
             font-size: 1.1rem;
+          }
+
+          .services-provide__content {
+            gap: 30px;
+          }
+
+          .services-provide__info {
+            gap: 30px;
           }
 
           .services-provide__image-content {

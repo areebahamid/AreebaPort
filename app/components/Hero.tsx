@@ -282,9 +282,33 @@ export default function Hero(): JSX.Element {
 
       {/* Header Elements */}
       <header className="hero__header">
-        {/* Top-Left */}
-        <div className="hero__header-left">
-          <div className="hero__brand-logo">
+        {/* Mobile Menu Icon - Top Left */}
+        <div
+          className={`hero__header-left ${
+            isMobileMenuOpen ? "menu-open" : ""
+          }`}>
+          <div className="hero__mobile-menu mobile-only">
+            <button
+              className="hero__hamburger"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu">
+              <span
+                className={`hero__hamburger-line ${
+                  isMobileMenuOpen ? "open" : ""
+                }`}></span>
+              <span
+                className={`hero__hamburger-line ${
+                  isMobileMenuOpen ? "open" : ""
+                }`}></span>
+              <span
+                className={`hero__hamburger-line ${
+                  isMobileMenuOpen ? "open" : ""
+                }`}></span>
+            </button>
+          </div>
+
+          {/* Desktop Brand Logo */}
+          <div className="hero__brand-logo desktop-only">
             <Image
               src={isDarkMode ? "/al1.svg" : "/a16.svg"}
               alt="Areeba Logo"
@@ -296,18 +320,17 @@ export default function Hero(): JSX.Element {
           </div>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Center */}
         <div className="hero__header-center desktop-only">
           <div className="hero__center-links">
             <a href="#work">projects</a>
-
             <a href="#services">services</a>
             <a href="#contact">contact</a>
           </div>
         </div>
 
-        {/* Desktop Social Links */}
-        <div className="hero__header-right desktop-only">
+        {/* Social Links - Top Right (Both Mobile and Desktop) */}
+        <div className="hero__header-right">
           <div className="hero__social-links">
             <a
               href="https://www.linkedin.com/in/areebahamid22/"
@@ -323,32 +346,19 @@ export default function Hero(): JSX.Element {
             </a>
           </div>
         </div>
-
-        {/* Mobile Hamburger Menu */}
-        <div className="hero__mobile-menu mobile-only">
-          <button
-            className="hero__hamburger"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu">
-            <span
-              className={`hero__hamburger-line ${
-                isMobileMenuOpen ? "open" : ""
-              }`}></span>
-            <span
-              className={`hero__hamburger-line ${
-                isMobileMenuOpen ? "open" : ""
-              }`}></span>
-            <span
-              className={`hero__hamburger-line ${
-                isMobileMenuOpen ? "open" : ""
-              }`}></span>
-          </button>
-        </div>
       </header>
 
       {/* Mobile Navigation Overlay */}
       <div className={`hero__mobile-overlay ${isMobileMenuOpen ? "open" : ""}`}>
         <nav className="hero__mobile-nav">
+          <div className="hero__mobile-nav-header">
+            <button
+              className="hero__close-menu"
+              onClick={closeMobileMenu}
+              aria-label="Close mobile menu">
+              <span className="hero__close-icon">×</span>
+            </button>
+          </div>
           <div className="hero__mobile-nav-links">
             <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>
               projects
