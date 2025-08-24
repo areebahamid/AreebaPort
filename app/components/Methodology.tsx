@@ -319,6 +319,27 @@ export default function Methodology() {
             padding: 25px 15px;
           }
         }
+
+        /* Dark mode styles for Methodology */
+        :global(.dark-mode) .methodology {
+          background-color: #000000;
+        }
+
+        :global(.dark-mode) .methodology__title {
+          color: white;
+        }
+
+        :global(.dark-mode) .methodology__intro {
+          color: white;
+        }
+
+        :global(.dark-mode) .methodology-card {
+          background: #333;
+        }
+
+        :global(.dark-mode) .methodology-card:hover {
+          background: var(--gradient) !important;
+        }
       `}</style>
     </section>
   );

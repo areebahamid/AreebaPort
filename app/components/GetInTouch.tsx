@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function GetInTouch() {
   const [currentLanguageIndex, setCurrentLanguageIndex] = useState(0);
+  const { isDarkMode } = useTheme();
 
   const languages = [
     "Hello",
@@ -38,7 +40,7 @@ export default function GetInTouch() {
         <div className="get-in-touch__main">
           <div className="get-in-touch__title-image">
             <img
-              src="/g3.png"
+              src={isDarkMode ? "/gt.svg" : "/g3.png"}
               alt="Get In Touch"
               className="get-in-touch__title-img"
             />
@@ -247,6 +249,27 @@ export default function GetInTouch() {
           .get-in-touch__phrase {
             font-size: 1rem;
           }
+        }
+
+        /* Dark mode styles for GetInTouch */
+        :global(.dark-mode) .get-in-touch {
+          background-color: #000000;
+        }
+
+        :global(.dark-mode) .get-in-touch__subtitle {
+          color: white;
+        }
+
+        :global(.dark-mode) .get-in-touch__phrase {
+          color: white;
+        }
+
+        :global(.dark-mode) .get-in-touch__social-link {
+          color: white;
+        }
+
+        :global(.dark-mode) .get-in-touch__social-link:hover {
+          color: #cccccc;
         }
       `}</style>
     </section>

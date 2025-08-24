@@ -51,6 +51,11 @@ export default function About() {
 
   return (
     <section id="studio" className="about">
+      {/* Background Image with Blur */}
+      <div className="about__background">
+        <div className="about__background-image"></div>
+      </div>
+
       <div className="about__container">
         <div className="about__content">
           <h2 className="about__title">aesthetics meets functionality!</h2>
@@ -254,12 +259,36 @@ export default function About() {
       <style jsx>{`
         .about {
           padding: 20px 0 80px;
-          background-color: #f8f8f8;
           color: #000;
           position: relative;
           overflow: hidden;
           padding-bottom: 40px;
           height: 140vh;
+          background-color: transparent !important; /* Override external CSS */
+        }
+
+        /* Background Image with Blur */
+        .about__background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-color: #f0f0f0; /* Fallback color */
+        }
+
+        .about__background-image {
+          width: 100%;
+          height: 100%;
+          background-image: url("/b43.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          filter: blur(2px);
+          transform: scale(1.1); /* Prevent blur edges from showing */
+          opacity: 1;
+          display: block;
         }
 
         .about__container {
@@ -267,6 +296,7 @@ export default function About() {
           margin: 0 auto;
           padding: 0 40px;
           position: relative;
+          z-index: 1;
         }
 
         .about__content {
@@ -295,9 +325,9 @@ export default function About() {
         .about__text p {
           font-family: "SF Pro Text", "SF Pro", -apple-system,
             BlinkMacSystemFont, sans-serif;
-          font-size: 1.1rem;
-          line-height: 1.8;
-          margin-bottom: 25px;
+          font-size: 1rem;
+          line-height: 1.3;
+          margin-bottom: 30px;
           font-weight: 500;
           text-align: center;
         }
@@ -338,7 +368,8 @@ export default function About() {
           height: 180px;
           pointer-events: none;
           margin-top: 40px;
-          background-color: #f8f8f8;
+          background-color: transparent;
+          z-index: 2;
         }
 
         .about__bands::after {
@@ -364,6 +395,7 @@ export default function About() {
           letter-spacing: 1px;
           width: 100%;
           overflow: hidden;
+          z-index: 2;
         }
 
         .band-content {
@@ -441,6 +473,160 @@ export default function About() {
           .band span {
             margin-right: 30px;
           }
+        }
+
+        /* Dark mode styles for About */
+        :global(.dark-mode) .about {
+          background-color: #000000 !important;
+        }
+
+        :global(.dark-mode) .about__background {
+          background-color: transparent !important;
+        }
+
+        :global(.dark-mode) .about__background-image {
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 1 !important;
+          filter: blur(1px) !important;
+        }
+
+        /* Alternative approach - direct targeting */
+        :global(html.dark-mode) .about__background-image {
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 1 !important;
+          filter: blur(0px) !important;
+        }
+
+        /* Force override with higher specificity */
+        :global(.dark-mode) .about .about__background .about__background-image {
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 1 !important;
+          filter: blur(1px) !important;
+        }
+
+        /* Clear existing background first */
+        :global(.dark-mode) .about__background-image {
+          background: none !important;
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 0.8 !important;
+          filter: blur(30px) !important;
+        }
+
+        /* Debug: Make background visible with a different approach */
+        :global(.dark-mode) .about__background-image::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 0.8 !important;
+          filter: blur(30px) !important;
+          z-index: -1;
+        }
+
+        /* Simple test - change background to a visible color */
+        :global(.dark-mode) .about__background-image {
+          background-color: red !important;
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 0.8 !important;
+          filter: blur(30px) !important;
+        }
+
+        /* Try targeting the parent element first */
+        :global(.dark-mode) .about__background {
+          background-color: red !important;
+        }
+
+        /* Try using attribute selector */
+        :global(.dark-mode) [class*="about__background-image"] {
+          background-color: red !important;
+          background-image: url("/56.jpg") !important;
+        }
+
+        /* Try using the most specific selector possible */
+        :global(.dark-mode)
+          section#studio.about
+          .about__background
+          .about__background-image {
+          background-color: red !important;
+          background-image: url("/56.jpg") !important;
+        }
+
+        /* Fix z-index issue and force visibility */
+        :global(.dark-mode) .about__background-image {
+          z-index: 1 !important;
+          background-color: red !important;
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 1 !important;
+          filter: blur(1px) !important;
+        }
+
+        /* Also try targeting the parent background div */
+        :global(.dark-mode) .about__background {
+          z-index: 1 !important;
+          background-color: red !important;
+          background-image: url("/56.jpg") !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+          opacity: 1 !important;
+          filter: blur(px) !important;
+        }
+
+        /* Test if dark mode is working - temporary */
+        :global(.dark-mode) .about__title {
+          color: #808080 !important;
+        }
+
+        :global(.dark-mode) .about__title {
+          color: white;
+        }
+
+        :global(.dark-mode) .about__text p {
+          color: white;
+        }
+
+        :global(.dark-mode) .about__resume-btn {
+          background-color: white;
+          color: black;
+          border: 2px solid white;
+        }
+
+        :global(.dark-mode) .about__resume-btn:hover {
+          background-color: transparent;
+          color: white;
+        }
+
+        :global(.dark-mode) .band--top {
+          color: white;
+        }
+
+        :global(.dark-mode) .band--bottom {
+          color: white;
+          -webkit-text-stroke: 1px white;
         }
       `}</style>
     </section>

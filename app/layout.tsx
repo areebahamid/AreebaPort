@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import LoadingScreen from "./components/LoadingScreen";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 export const metadata: Metadata = {
   icons: {
@@ -19,11 +20,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
       </head>
       <body>
-        <LoadingScreen />
-        <SmoothScroll>{children}</SmoothScroll>
+        <ThemeProvider>
+          <LoadingScreen />
+          <SmoothScroll>{children}</SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

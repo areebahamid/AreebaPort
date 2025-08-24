@@ -21,7 +21,7 @@ export default function Services() {
           <div className="services-provide__content">
             <div className="services-provide__image">
               <img
-                src="/a1.jpg"
+                src="/a2.jpg"
                 alt="Designer at work"
                 className="services-provide__image-content"
               />
@@ -60,7 +60,7 @@ export default function Services() {
       <style jsx>{`
         .services {
           padding: 30px 20px;
-          background-color: #f8f8f8;
+          background-color: var(--bg-secondary);
           min-height: 100vh;
         }
 
@@ -79,7 +79,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 3rem;
           font-weight: 700;
-          color: #2a2a2a;
+          color: var(--text-tertiary);
           margin: 0 0 30px 0;
           letter-spacing: -0.02em;
         }
@@ -89,7 +89,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 1.2rem;
           line-height: 1.6;
-          color: #666;
+          color: var(--text-secondary);
           margin: 0;
           max-width: 600px;
           margin: 0 auto;
@@ -106,7 +106,7 @@ export default function Services() {
           background: #808080;
           border-radius: 0;
           overflow: hidden;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 8px 32px var(--shadow-color);
           transition: all 0.4s ease;
           cursor: pointer;
           position: relative;
@@ -118,7 +118,7 @@ export default function Services() {
         .service-card:hover {
           background: var(--gradient) !important;
           transform: translateY(-12px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 20px 60px var(--shadow-color);
         }
 
         .service-card__content {
@@ -256,7 +256,7 @@ export default function Services() {
         /* Services Provide Section */
         .services-provide {
           padding: 20px 20px;
-          background-color: #f8f8f8;
+          background-color: var(--bg-secondary);
           margin-top: 80px;
         }
 
@@ -274,7 +274,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 4rem;
           font-weight: 700;
-          color: #000;
+          color: var(--text-primary);
           margin: 0 0 20px 0;
           letter-spacing: -0.02em;
           display: flex;
@@ -292,7 +292,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 1.3rem;
           line-height: 1.6;
-          color: #000;
+          color: var(--text-primary);
           margin: 0;
           max-width: 800px;
           font-weight: 600;
@@ -321,7 +321,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 1.5rem;
           font-weight: 700;
-          color: #000;
+          color: var(--text-primary);
           margin: 0 0 10px 0;
           letter-spacing: -0.01em;
         }
@@ -337,7 +337,7 @@ export default function Services() {
             BlinkMacSystemFont, sans-serif;
           font-size: 1.1rem;
           line-height: 1.3;
-          color: #000;
+          color: var(--text-primary);
           margin-bottom: 2px;
           font-weight: 600;
         }
@@ -501,6 +501,47 @@ export default function Services() {
           filter: grayscale(0%);
           opacity: 1;
           mix-blend-mode: normal;
+        }
+
+        /* Dark mode styles for Services */
+        :global(.dark-mode) .services {
+          background-color: var(--bg-secondary);
+        }
+
+        :global(.dark-mode) .services-provide {
+          background-color: var(--bg-secondary);
+        }
+
+        :global(.dark-mode) .services__title {
+          color: white;
+        }
+
+        :global(.dark-mode) .services__intro {
+          color: #cccccc;
+        }
+
+        :global(.dark-mode) .services-provide__title {
+          color: white;
+        }
+
+        :global(.dark-mode) .services-provide__description {
+          color: white;
+        }
+
+        :global(.dark-mode) .services-provide__column-title {
+          color: white;
+        }
+
+        :global(.dark-mode) .services-provide__list li {
+          color: white;
+        }
+
+        :global(.dark-mode) .service-card {
+          background: #333;
+        }
+
+        :global(.dark-mode) .service-card:hover {
+          background: var(--gradient) !important;
         }
       `}</style>
     </section>

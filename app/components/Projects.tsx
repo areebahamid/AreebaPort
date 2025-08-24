@@ -437,6 +437,51 @@ export default function Projects() {
             height: 60px;
           }
         }
+
+        /* Dark mode styles for Projects */
+        :global(.dark-mode) .projects {
+          background-color: #000000;
+        }
+
+        :global(.dark-mode) .projects__title {
+          color: white;
+        }
+
+        :global(.dark-mode) .projects__intro {
+          color: white;
+        }
+
+        :global(.dark-mode) .projects__copyright {
+          color: white;
+        }
+
+        :global(.dark-mode) .project-number {
+          color: white;
+        }
+
+        :global(.dark-mode) .project-description {
+          color: white;
+        }
+
+        :global(.dark-mode) .project-client {
+          color: white;
+        }
+
+        :global(.dark-mode) .project-category {
+          color: #cccccc;
+        }
+
+        :global(.dark-mode) .project-image-overlay {
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        :global(.dark-mode) .project-image-overlay-content h3 {
+          color: white;
+        }
+
+        :global(.dark-mode) .project-image-overlay-content p {
+          color: #cccccc;
+        }
       `}</style>
     </section>
   );

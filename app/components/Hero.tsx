@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import "../styles/components/hero.css";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface MousePosition {
   x: number;
@@ -15,6 +17,7 @@ export default function Hero(): JSX.Element {
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const animationRef = useRef<number | null>(null);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,10 +28,10 @@ export default function Hero(): JSX.Element {
     const originalCtx = originalCanvas.getContext("2d");
     if (!ctx || !originalCtx) return;
 
-    // Load the actual image
+    // Load the actual image based on theme
     const img = new window.Image();
     img.crossOrigin = "anonymous"; // Handle CORS if needed
-    img.src = "/a16.svg";
+    img.src = isDarkMode ? "/al1.svg" : "/a16.svg";
 
     img.onload = () => {
       // Set canvas size to match image aspect ratio
@@ -228,7 +231,7 @@ export default function Hero(): JSX.Element {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isHovering, mousePos.x, mousePos.y]);
+  }, [isHovering, mousePos.x, mousePos.y, isDarkMode]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -283,7 +286,7 @@ export default function Hero(): JSX.Element {
         <div className="hero__header-left">
           <div className="hero__brand-logo">
             <Image
-              src="/a16.svg"
+              src={isDarkMode ? "/al1.svg" : "/a16.svg"}
               alt="Areeba Logo"
               width={70}
               height={20}
