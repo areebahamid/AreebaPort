@@ -5,6 +5,7 @@
 @import "./styles/components/hero.css";
 @import "./styles/components/about.css";
 @import "./styles/components/loading-screen.css";
+@import "./styles/components/mobile-responsive.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -44,6 +45,29 @@ html.lenis {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Mobile-first responsive base */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
 }
 
 body {
@@ -106,6 +130,37 @@ textarea {
 @media (prefers-reduced-motion: no-preference) {
   * {
     scroll-behavior: smooth;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Ensure proper touch scrolling */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ensure proper touch targets */
+  button, a, input, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .project-image:hover .project-image-overlay,
+  .methodology-card:hover,
+  .service-card:hover {
+    transform: none;
   }
 }
 
