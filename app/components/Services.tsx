@@ -11,8 +11,8 @@ export default function Services() {
               Services <span className="services-provide__arrow">↘</span>
             </h2>
             <p className="services-provide__description">
-              We're a digital design studio that's all about breaking the mold!
-              We don't do boring websites or ordinary apps - we specialize in
+              I am a digital designer that's all about breaking the mold! I
+              don't do boring websites or ordinary apps - I specialize in
               crafting the wildest, most unconventional digital experiences out
               there.
             </p>
