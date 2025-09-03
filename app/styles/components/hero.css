@@ -391,24 +391,25 @@ body {
 @media (max-width: 640px) {
   .hero {
     padding: 0rem;
-    height: 2vh;
+    height: 60vh;
+    min-height: 50vh;
   }
 
   .hero__header {
     padding: 0rem 0rem;
     justify-content: space-between;
-    margin-bottom: 10rem;
+    margin-bottom: 2rem;
     width: 100%;
-    margin-top: -10rem;
+    margin-top: 0rem;
   }
 
   .hero__logo-container {
     max-width: 95%;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   .hero__logo {
-    max-height: 90vh;
+    max-height: 40vh;
     width: auto;
   }
 
