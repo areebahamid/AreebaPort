@@ -94,65 +94,9 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
     document.addEventListener("click", handleHashClick);
 
-    // Add scroll to top functionality
-    const scrollToTop = () => {
-      if (lenis) {
-        lenis.scrollTo(0, {
-          duration: 2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-      }
-    };
-
-    // Add scroll to top button if it doesn't exist
-    if (!document.querySelector(".scroll-to-top")) {
-      const scrollTopBtn = document.createElement("button");
-      scrollTopBtn.className = "scroll-to-top";
-      scrollTopBtn.innerHTML = "↑";
-      scrollTopBtn.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-size: 20px;
-        z-index: 1000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        display: none;
-      `;
-
-      scrollTopBtn.addEventListener("click", scrollToTop);
-      document.body.appendChild(scrollTopBtn);
-
-      // Show/hide scroll to top button based on scroll position
-      lenis.on("scroll", () => {
-        if (lenis.scroll > 500) {
-          scrollTopBtn.style.display = "block";
-          scrollTopBtn.style.opacity = "1";
-        } else {
-          scrollTopBtn.style.opacity = "0";
-          setTimeout(() => {
-            if (lenis.scroll <= 500) {
-              scrollTopBtn.style.display = "none";
-            }
-          }, 300);
-        }
-      });
-    }
-
     return () => {
       lenis.destroy();
       document.removeEventListener("click", handleHashClick);
-      const scrollTopBtn = document.querySelector(".scroll-to-top");
-      if (scrollTopBtn) {
-        scrollTopBtn.remove();
-      }
     };
   }, []);
 

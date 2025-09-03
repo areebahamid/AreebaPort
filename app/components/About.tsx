@@ -159,7 +159,7 @@ export default function About() {
 
         .about__content {
           text-align: center;
-          margin-bottom: 80px;
+          margin-bottom: 60px;
         }
 
         .about__title {
@@ -223,9 +223,9 @@ export default function About() {
         .about__bands {
           position: relative;
           width: 100%;
-          height: 180px;
+          height: 150px;
           pointer-events: none;
-          margin-top: 40px;
+          margin-top: 30px;
           background-color: transparent;
           z-index: 2;
           overflow: hidden;
@@ -317,21 +317,36 @@ export default function About() {
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
           .about {
-            padding: 60px 0;
+            padding: 30px 0 20px;
+            height: auto;
           }
 
           .about__container {
             padding: 0 20px;
           }
 
+          .about__content {
+            margin-bottom: 40px;
+          }
+
           .about__title {
             font-size: 2.5rem;
+            margin-bottom: 20px;
+          }
+
+          .about__text {
             margin-bottom: 30px;
           }
 
           .about__text p {
             font-size: 1rem;
             line-height: 1.6;
+            margin-bottom: 20px;
+          }
+
+          .about__bands {
+            height: 120px;
+            margin-top: 20px;
           }
 
           .band {
@@ -344,12 +359,31 @@ export default function About() {
         }
 
         @media (max-width: 480px) {
+          .about {
+            padding: 20px 0 10px;
+          }
+
+          .about__content {
+            margin-bottom: 30px;
+          }
+
           .about__title {
             font-size: 2rem;
+            margin-bottom: 15px;
+          }
+
+          .about__text {
+            margin-bottom: 20px;
           }
 
           .about__text p {
             font-size: 0.9rem;
+            margin-bottom: 15px;
+          }
+
+          .about__bands {
+            height: 100px;
+            margin-top: 15px;
           }
 
           .band {

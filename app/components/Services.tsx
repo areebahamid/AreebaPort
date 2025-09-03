@@ -45,9 +45,9 @@ export default function Services() {
               <div className="services-provide__column">
                 <h3 className="services-provide__column-title">Stats:</h3>
                 <ul className="services-provide__list">
-                  <li>Design Projects 200+</li>
-                  <li>Happy Clients 50+</li>
-                  <li>Years Experience 3+</li>
+                  <li>Design Projects 80+</li>
+                  <li>Happy Clients 20+</li>
+                  <li>Years Experience 2+</li>
 
                   <li>Figma Expert</li>
                 </ul>
@@ -255,9 +255,9 @@ export default function Services() {
 
         /* Services Provide Section */
         .services-provide {
-          padding: 20px 20px;
+          padding: 40px 20px;
           background-color: var(--bg-secondary);
-          margin-top: 80px;
+          margin-top: 40px;
         }
 
         .services-provide__container {
@@ -360,12 +360,12 @@ export default function Services() {
 
         @media (max-width: 768px) {
           .services-provide {
-            padding: 60px 20px;
-            margin-top: 60px;
+            padding: 30px 20px;
+            margin-top: 30px;
           }
 
           .services-provide__header {
-            margin-bottom: 60px;
+            margin-bottom: 30px;
           }
 
           .services-provide__title {
@@ -394,8 +394,8 @@ export default function Services() {
 
         @media (max-width: 480px) {
           .services-provide {
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 20px 20px;
+            margin-top: 20px;
           }
 
           .services-provide__title {
@@ -429,11 +429,11 @@ export default function Services() {
 
         @media (max-width: 768px) {
           .services {
-            padding: 80px 20px;
+            padding: 40px 20px;
           }
 
           .services__header {
-            margin-bottom: 60px;
+            margin-bottom: 30px;
           }
 
           .services__title {
@@ -465,7 +465,7 @@ export default function Services() {
 
         @media (max-width: 480px) {
           .services {
-            padding: 60px 20px;
+            padding: 30px 20px;
           }
 
           .services__title {

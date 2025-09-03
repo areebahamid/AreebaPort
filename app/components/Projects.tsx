@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Projects() {
   const projectsRef = useRef<HTMLDivElement>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const projects = projectsRef.current;
@@ -22,6 +24,49 @@ export default function Projects() {
     observer.observe(projects);
     return () => observer.disconnect();
   }, []);
+
+  // Mobile scroll effect for project cards
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        const projectCards = document.querySelectorAll('.project-item');
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = viewportHeight / 2;
+
+        projectCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
+          const maxDistance = viewportHeight * 0.6; // Cards within 60% of viewport height
+
+          if (distanceFromCenter < maxDistance) {
+            card.classList.add('in-view');
+            card.classList.remove('out-of-view');
+          } else {
+            card.classList.add('out-of-view');
+            card.classList.remove('in-view');
+          }
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const openImageModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto';
+  };
 
   const projects = [
     {
@@ -56,11 +101,10 @@ export default function Projects() {
     },
     {
       id: "03",
-      description: "Full-cycle website creation, branding of Dotlabs",
-      client: "Dotlabs",
-      category: "Solutions",
-      link: "https://dotlabs.online",
-      image: "/project/d1.png",
+      description: "Design of QLoud app",
+      client: "QLoud",
+      category: "Technology",
+      image: "/project/qmockup.png",
     },
     {
       id: "04",
@@ -127,7 +171,11 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-              <div className="project-image">
+              <div 
+                className="project-image" 
+                onClick={() => openImageModal(project.image)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={project.image} alt={project.client} />
                 <div className="project-image-overlay">
                   <img src={project.image} alt={project.client} />
@@ -137,6 +185,18 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Image Modal */}
+      {isModalOpen && selectedImage && (
+        <div className="image-modal" onClick={closeImageModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-modal-close" onClick={closeImageModal}>
+              ×
+            </button>
+            <img src={selectedImage} alt="Project" />
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .projects {
@@ -155,7 +215,7 @@ export default function Projects() {
           margin-left: 300px;
           padding: 0 0px;
         }
-        
+
         /* Mobile responsive adjustments */
         @media (max-width: 1024px) {
           .projects__list-container {
@@ -172,7 +232,7 @@ export default function Projects() {
           margin-bottom: 10px;
           padding-bottom: 10px;
         }
-        
+
         /* Mobile responsive header */
         @media (max-width: 1024px) {
           .projects__header {
@@ -228,7 +288,7 @@ export default function Projects() {
           opacity: 1;
           transform: none;
         }
-        
+
         /* Mobile responsive project items */
         @media (max-width: 1024px) {
           .project-item {
@@ -303,7 +363,7 @@ export default function Projects() {
           overflow: hidden;
           border-radius: 8px;
         }
-        
+
         /* Mobile responsive project images */
         @media (max-width: 1024px) {
           .project-image {
@@ -488,6 +548,110 @@ export default function Projects() {
           color: white !important;
           text-decoration-color: white !important;
           border-bottom-color: white !important;
+        }
+
+        /* Mobile scroll effects */
+        @media (max-width: 768px) {
+          .project-item {
+            transition: all 0.3s ease;
+          }
+
+          .project-item.out-of-view {
+            opacity: 0.3;
+            filter: grayscale(100%);
+            transform: scale(0.95);
+          }
+
+          .project-item.in-view {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1);
+          }
+
+          .project-image {
+            transition: all 0.3s ease;
+          }
+
+          .project-item.out-of-view .project-image {
+            filter: grayscale(100%) brightness(0.7);
+          }
+
+          .project-item.in-view .project-image {
+            filter: grayscale(0%) brightness(1);
+          }
+        }
+
+        /* Image Modal Styles */
+        .image-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.9);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10000;
+          backdrop-filter: blur(10px);
+        }
+
+        .image-modal-content {
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .image-modal-content img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          border-radius: 8px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-modal-close {
+          position: absolute;
+          top: -50px;
+          right: 0;
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          color: white;
+          font-size: 2rem;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
+        }
+
+        .image-modal-close:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(1.1);
+        }
+
+        /* Mobile modal adjustments */
+        @media (max-width: 768px) {
+          .image-modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            padding: 20px;
+          }
+
+          .image-modal-close {
+            top: -40px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            font-size: 1.5rem;
+          }
         }
       `}</style>
     </section>
