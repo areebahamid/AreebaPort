@@ -391,25 +391,25 @@ body {
 @media (max-width: 640px) {
   .hero {
     padding: 0rem;
-    height: 60vh;
-    min-height: 50vh;
+    height: 45vh;
+    min-height: 40vh;
   }
 
   .hero__header {
-    padding: 0rem 0rem;
+    padding: 0.1rem 0rem;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     width: 100%;
     margin-top: 0rem;
   }
 
   .hero__logo-container {
     max-width: 95%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .hero__logo {
-    max-height: 40vh;
+    max-height: 30vh;
     width: auto;
   }
 
@@ -454,11 +454,13 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    padding: 0.5rem;
+    padding: 0.25rem;
+    height: 40vh;
+    min-height: 35vh;
   }
 
   .hero__header {
-    padding: 0.5rem 0.75rem;
+    padding: 0.25rem 0.75rem;
     justify-content: space-between;
     margin-bottom: 0.25rem;
     width: 100%;
@@ -509,19 +511,21 @@ body {
 
 @media (max-width: 360px) {
   .hero {
-    padding: 0.25rem;
+    padding: 0.125rem;
+    height: 35vh;
+    min-height: 30vh;
   }
 
   .hero__header {
-    padding: 0.25rem 0.5rem;
+    padding: 0.125rem 0.5rem;
     justify-content: space-between;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.125rem;
     width: 100%;
   }
 
   .hero__logo-container {
     max-width: 80%;
-    margin-top: 0.25rem;
+    margin-top: 0.125rem;
   }
 
   .hero__brand,
