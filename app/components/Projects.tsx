@@ -29,7 +29,7 @@ export default function Projects() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth <= 768) {
-        const projectCards = document.querySelectorAll('.project-item');
+        const projectCards = document.querySelectorAll(".project-item");
         const viewportHeight = window.innerHeight;
         const viewportCenter = viewportHeight / 2;
 
@@ -40,32 +40,32 @@ export default function Projects() {
           const maxDistance = viewportHeight * 0.6; // Cards within 60% of viewport height
 
           if (distanceFromCenter < maxDistance) {
-            card.classList.add('in-view');
-            card.classList.remove('out-of-view');
+            card.classList.add("in-view");
+            card.classList.remove("out-of-view");
           } else {
-            card.classList.add('out-of-view');
-            card.classList.remove('in-view');
+            card.classList.add("out-of-view");
+            card.classList.remove("in-view");
           }
         });
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const openImageModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeImageModal = () => {
     setSelectedImage(null);
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   const projects = [
@@ -171,11 +171,10 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-              <div 
-                className="project-image" 
+              <div
+                className="project-image"
                 onClick={() => openImageModal(project.image)}
-                style={{ cursor: 'pointer' }}
-              >
+                style={{ cursor: "pointer" }}>
                 <img src={project.image} alt={project.client} />
                 <div className="project-image-overlay">
                   <img src={project.image} alt={project.client} />
@@ -189,7 +188,9 @@ export default function Projects() {
       {/* Image Modal */}
       {isModalOpen && selectedImage && (
         <div className="image-modal" onClick={closeImageModal}>
-          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="image-modal-content"
+            onClick={(e) => e.stopPropagation()}>
             <button className="image-modal-close" onClick={closeImageModal}>
               ×
             </button>
