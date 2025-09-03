@@ -67,7 +67,7 @@
   /* Glass effect when scrolling */
   .hero__header.scrolled {
     background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
@@ -194,7 +194,7 @@
   .hero__header.scrolled {
     background-color: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
   }
