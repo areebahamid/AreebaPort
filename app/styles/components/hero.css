@@ -547,13 +547,13 @@ body {
     transition: all 0.3s ease;
   }
 
-  /* Glass effect when scrolling - Enhanced for mobile */
+  /* Glass effect when scrolling - iOS-like for mobile */
   .hero__header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important;
   }
 
   /* Menu Icon - Top Left */
@@ -801,13 +801,13 @@ body {
   background-color: #000000;
 }
 
-/* Dark mode glass effect for mobile headers */
+/* Dark mode glass effect for mobile headers - iOS-like */
 :root.dark-mode .hero__header.scrolled {
-  background-color: rgba(0, 0, 0, 0.95) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3) !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 :root.dark-mode .hero__tagline {
