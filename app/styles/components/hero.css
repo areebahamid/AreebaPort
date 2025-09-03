@@ -454,13 +454,13 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    padding: 0.25rem;
+    padding: 0rem;
     height: 30vh;
     min-height: 35vh;
   }
 
   .hero__header {
-    padding: 0.25rem 0.75rem;
+    padding: 0rem 0.75rem;
     justify-content: space-between;
     margin-bottom: 0.25rem;
     width: 100%;

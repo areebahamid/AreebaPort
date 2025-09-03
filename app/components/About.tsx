@@ -404,123 +404,18 @@ export default function About() {
           background-color: transparent !important;
         }
 
+        /* Dark mode background image */
         :global(.dark-mode) .about__background-image {
           background-image: url("/56.jpg") !important;
           background-size: cover !important;
           background-position: center !important;
           background-repeat: no-repeat !important;
-          opacity: 1 !important;
+          opacity: 0.8 !important;
           filter: blur(1px) !important;
-        }
-
-        /* Alternative approach - direct targeting */
-        :global(html.dark-mode) .about__background-image {
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 1 !important;
-          filter: blur(0px) !important;
-        }
-
-        /* Force override with higher specificity */
-        :global(.dark-mode) .about .about__background .about__background-image {
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 1 !important;
-          filter: blur(1px) !important;
-        }
-
-        /* Clear existing background first */
-        :global(.dark-mode) .about__background-image {
-          background: none !important;
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 0.8 !important;
-          filter: blur(30px) !important;
-        }
-
-        /* Debug: Make background visible with a different approach */
-        :global(.dark-mode) .about__background-image::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 0.8 !important;
-          filter: blur(30px) !important;
-          z-index: -1;
-        }
-
-        /* Simple test - change background to a visible color */
-        :global(.dark-mode) .about__background-image {
-          background-color: red !important;
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 0.8 !important;
-          filter: blur(30px) !important;
-        }
-
-        /* Try targeting the parent element first */
-        :global(.dark-mode) .about__background {
-          background-color: red !important;
-        }
-
-        /* Try using attribute selector */
-        :global(.dark-mode) [class*="about__background-image"] {
-          background-color: red !important;
-          background-image: url("/56.jpg") !important;
-        }
-
-        /* Try using the most specific selector possible */
-        :global(.dark-mode)
-          section#studio.about
-          .about__background
-          .about__background-image {
-          background-color: red !important;
-          background-image: url("/56.jpg") !important;
-        }
-
-        /* Fix z-index issue and force visibility */
-        :global(.dark-mode) .about__background-image {
           z-index: 1 !important;
-          background-color: red !important;
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 1 !important;
-          filter: blur(1px) !important;
         }
 
-        /* Also try targeting the parent background div */
-        :global(.dark-mode) .about__background {
-          z-index: 1 !important;
-          background-color: red !important;
-          background-image: url("/56.jpg") !important;
-          background-size: cover !important;
-          background-position: center !important;
-          background-repeat: no-repeat !important;
-          opacity: 1 !important;
-          filter: blur(px) !important;
-        }
-
-        /* Test if dark mode is working - temporary */
-        :global(.dark-mode) .about__title {
-          color: #808080 !important;
-        }
-
+        /* Dark mode text styles */
         :global(.dark-mode) .about__title {
           color: white;
         }
