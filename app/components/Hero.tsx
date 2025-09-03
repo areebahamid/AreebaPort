@@ -16,6 +16,7 @@ export default function Hero(): JSX.Element {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const animationRef = useRef<number | null>(null);
   const { isDarkMode } = useTheme();
 
@@ -233,6 +234,43 @@ export default function Hero(): JSX.Element {
     };
   }, [isHovering, mousePos.x, mousePos.y, isDarkMode]);
 
+  // Scroll detection for mobile glass effect - on mobile devices (480px and below)
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const isMobileScreen = window.innerWidth <= 480;
+
+      if (isMobileScreen) {
+        setIsScrolled(scrollY > 50);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    const handleResize = () => {
+      // Re-evaluate on resize to handle orientation changes
+      const scrollY = window.scrollY;
+      const isMobileScreen = window.innerWidth <= 480;
+
+      if (isMobileScreen) {
+        setIsScrolled(scrollY > 50);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -281,7 +319,7 @@ export default function Hero(): JSX.Element {
       <div className="scroll-indicator"></div>
 
       {/* Header Elements */}
-      <header className="hero__header">
+      <header className={`hero__header ${isScrolled ? "scrolled" : ""}`}>
         {/* Mobile Menu Icon - Top Left */}
         <div
           className={`hero__header-left ${

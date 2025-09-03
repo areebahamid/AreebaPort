@@ -52,14 +52,33 @@
     padding: 1rem;
     justify-content: center;
     align-items: center;
-    position: relative;
-    margin-bottom: 6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    margin: 0;
+    background-color: transparent;
+    backdrop-filter: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Glass effect when scrolling */
+  .hero__header.scrolled {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero__header-center {
+    display: none;
   }
 
   .hero__header-left,
-  .hero__header-center,
   .hero__header-right {
-    display: none;
+    display: flex;
   }
 
   .hero__logo-container {
@@ -106,6 +125,17 @@
     z-index: 10;
     width: 100%;
     margin: 0;
+    background-color: transparent;
+    backdrop-filter: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Glass effect when scrolling */
+  .hero__header.scrolled {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .hero__logo-container {
@@ -141,7 +171,7 @@
   }
 
   .hero__header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -152,6 +182,18 @@
     z-index: 10;
     width: 100%;
     margin: 0;
+    background-color: transparent;
+    backdrop-filter: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Glass effect when scrolling - Enhanced for mobile */
+  .hero__header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
   }
 
   .hero__logo-container {
