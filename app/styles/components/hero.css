@@ -538,7 +538,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4.25rem 0.75rem 0.75rem 0.75rem;
+    padding: 1.25rem 0.75rem 0.75rem 0.75rem;
     z-index: 10;
     width: 100%;
     margin: 0;
@@ -560,6 +560,7 @@ body {
   .hero__header-left {
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
   }
 
   .hero__mobile-menu {
@@ -588,12 +589,14 @@ body {
   .hero__header-right {
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
   }
 
   .hero__social-links {
     display: flex;
     flex-direction: row;
     gap: 0.75rem;
+    align-items: center;
   }
 
   .hero__social-links a {
@@ -601,6 +604,7 @@ body {
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   /* Hide desktop elements */
