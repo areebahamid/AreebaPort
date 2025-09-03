@@ -79,6 +79,8 @@
   .hero__header-left,
   .hero__header-right {
     display: flex;
+    align-items: center;
+    flex: 0 0 auto;
   }
 
   .hero__logo-container {
