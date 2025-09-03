@@ -561,6 +561,7 @@ body {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
+    height: 28px; /* Match hamburger icon height */
   }
 
   .hero__mobile-menu {
@@ -590,6 +591,7 @@ body {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
+    height: 28px; /* Match hamburger icon height */
   }
 
   .hero__social-links {
@@ -597,6 +599,7 @@ body {
     flex-direction: row;
     gap: 0.75rem;
     align-items: center;
+    height: 100%;
   }
 
   .hero__social-links a {
@@ -605,6 +608,10 @@ body {
     text-decoration: none;
     font-weight: 700;
     white-space: nowrap;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 
   /* Hide desktop elements */
